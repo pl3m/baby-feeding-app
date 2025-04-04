@@ -186,6 +186,20 @@ function FeedingForm({ feedingToEdit, onCancelEdit }) {
               onChange={handleChange}
               step='0.1'
               min='0'
+              max={
+                feedingData.feedingType === 'breast'
+                  ? '60'
+                  : feedingData.feedingType === 'bottle' &&
+                    feedingData.unit === 'oz'
+                  ? '12'
+                  : feedingData.feedingType === 'bottle' &&
+                    feedingData.unit === 'ml'
+                  ? '325'
+                  : feedingData.feedingType === 'solid' &&
+                    feedingData.unit === 'g'
+                  ? '300'
+                  : '12'
+              }
               required
             />
           </div>

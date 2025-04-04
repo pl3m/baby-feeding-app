@@ -27,7 +27,6 @@ function FeedingList({ onEditFeeding }) {
     },
     onError: (err) => {
       console.error('Error deleting feeding:', err);
-      // You could show an error toast/notification here
     },
   });
 
@@ -64,7 +63,10 @@ function FeedingList({ onEditFeeding }) {
   }
 
   return (
-    <div className='list-section'>
+    <div
+      className='list-section'
+      id='feeding-history'
+    >
       <h2>Feeding History</h2>
       <ul className='feeding-list'>
         {feedings.map((feeding) => (
@@ -109,21 +111,23 @@ function FeedingList({ onEditFeeding }) {
                 </button>
               ) : (
                 <div className='delete-confirm'>
-                  <span>Are you sure?</span>
-                  <button
-                    className='confirm-yes'
-                    onClick={() => confirmDelete(feeding.id)}
-                    disabled={deleteMutation.isPending}
-                  >
-                    {deleteMutation.isPending ? 'Deleting...' : 'Yes'}
-                  </button>
-                  <button
-                    className='confirm-no'
-                    onClick={cancelDelete}
-                    disabled={deleteMutation.isPending}
-                  >
-                    No
-                  </button>
+                  <div className='confirm-message'>Delete this feeding?</div>
+                  <div className='confirm-buttons'>
+                    <button
+                      className='confirm-yes'
+                      onClick={() => confirmDelete(feeding.id)}
+                      disabled={deleteMutation.isPending}
+                    >
+                      {deleteMutation.isPending ? 'Deleting...' : 'Yes'}
+                    </button>
+                    <button
+                      className='confirm-no'
+                      onClick={cancelDelete}
+                      disabled={deleteMutation.isPending}
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

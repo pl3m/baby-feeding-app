@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Header from './components/Header';
 import FeedingForm from './components/FeedingForm';
 import FeedingList from './components/FeedingList';
+import SkipToFeedingsButton from './components/SkipToFeedingsButton';
 import './App.css';
 
 // Create a client
@@ -33,6 +34,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className='app-container'>
         <Header />
+        <SkipToFeedingsButton />
         <main className='app-content'>
           <FeedingForm
             feedingToEdit={editingFeeding}
